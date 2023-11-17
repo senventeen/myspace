@@ -1,58 +1,145 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="common-layout">
+    <el-container>
+      <el-header class="head">
+        <div class="navbar">
+          <div class="logo">
+            <img
+              style="width: 30px; margin-right: 5px"
+              src="../assets/logo.png"
+            />
+            seventeen space
+          </div>
+          <div class="others">
+            <el-input
+              class="search"
+              v-model="input"
+              placeholder="暂时没什么用噢"
+            >
+              <template #append>
+                <el-button @click="() => {}">
+                  <el-icon><Search /></el-icon
+                ></el-button>
+              </template>
+            </el-input>
+            <div class="item">
+              <el-icon class="icon"><Search /></el-icon>
+              <div class="text">哆</div>
+            </div>
+            <div class="item">
+              <el-icon class="icon"><Search /></el-icon>
+              <div class="text">啦</div>
+            </div>
+            <div class="item">
+              <el-icon class="icon"><Search /></el-icon>
+              <div class="text">咪</div>
+            </div>
+            <div class="item">
+              <el-icon class="icon"><Search /></el-icon>
+              <div class="text">法</div>
+            </div>
+          </div>
+        </div>
+      </el-header>
+      <el-main style="padding: 0">
+        <div class="test">Thirty</div>
+      </el-main>
+    </el-container>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+<script setup></script>
+
+<style lang="scss">
+.head {
+  background-color: #fff;
+  border-bottom: #dcdfe6 solid;
+  border-radius: 0.1em;
+  display: flex;
+  align-items: center;
+  .navbar {
+    margin: 0 8vw;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      opacity: 0;
+      font-size: 20px;
+      color: #409eff;
+      animation: leftout 1s ease 1 normal forwards;
+    }
+    .others {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .search {
+        width: 150%;
+        transition: 1s ease all;
+      }
+      .item {
+        cursor: default;
+        margin-left: 20px;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        .icon {
+          text-align: center;
+        }
+        .text {
+          color: #409eff;
+        }
+      }
+      .item:hover {
+        .icon {
+          animation: upout 400ms linear 1 normal forwards;
+        }
+      }
+    }
   }
 }
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
+@keyframes leftout {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+@keyframes upout {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(0px);
+  }
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.test {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 100vh;
+  margin: 0 10%;
+  background: url(https://cdn.jsdelivr.net/gh/senventeen/picx-images-hosting@private/myphoto/image.6ewciyzw33w0.webp)
+    no-repeat center center;
+  background-size: cover;
+  align-items: center;
+  font-size: 5em;
+  font-weight: bold;
+  /* text-shadow: 0.04em 0.04em 0.08em #1cccff, 0 0 0.08em #61c3f4; */
+  color: #fff;
+  animation: breather 1s ease infinite alternate;
 }
-a {
-  color: #42b983;
+@keyframes breather {
+  from {
+    text-shadow: 0 0 0.01em #051947;
+  }
+  to {
+    text-shadow: 0 0 0.3em #051947;
+  }
 }
 </style>
